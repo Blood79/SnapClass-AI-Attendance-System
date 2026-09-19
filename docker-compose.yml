@@ -1,0 +1,22 @@
+services:
+  snapclass:
+    build:
+      context: .
+      args:
+        BIOMETRIC: 0
+    ports:
+      - "8501:8501"
+    environment:
+      SNAPCLASS_QR_SECRET: change-this-for-local-use
+    volumes:
+      - snapclass-data:/app/data
+  landing:
+    build:
+      context: .
+      args:
+        BIOMETRIC: 0
+    command: python app/landing.py
+    ports:
+      - "5000:5000"
+volumes:
+  snapclass-data:
