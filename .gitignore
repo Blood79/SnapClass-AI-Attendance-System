@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.streamlit/secrets.toml
+.DS_Store
+*.log
+data/*.json
+models/*.bin
+models/*.pkl
+*.wav
+*.mp3
+*.m4a
