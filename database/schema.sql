@@ -1,0 +1,8 @@
+create extension if not exists pgcrypto;
+create table if not exists teachers (id uuid primary key default gen_random_uuid(), name text not null, email text unique not null, password_hash text not null, created_at timestamptz not null default now());
+create table if not exists students (id uuid primary key default gen_random_uuid(), name text not null, email text unique not null, password_hash text not null, face_embedding vector(128), voice_embedding jsonb, created_at timestamptz not null default now());
+create table if not exists subjects (id uuid primary key default gen_random_uuid(), teacher_id uuid not null references teachers(id) on delete cascade, name text not null, created_at timestamptz not null default now());
+create table if not exists subject_students (subject_id uuid references subjects(id) on delete cascade, student_id uuid references students(id) on delete cascade, joined_at timestamptz not null default now(), primary key(subject_id, student_id));
+create table if not exists attendance_logs (id uuid primary key default gen_random_uuid(), subject_id uuid not null references subjects(id) on delete cascade, student_id uuid not null references students(id) on delete cascade, status text not null check(status in ('present','absent','late')), method text not null check(method in ('manual','face','voice','demo')), confidence numeric, recorded_at timestamptz not null default now());
+create index if not exists attendance_logs_subject_student_idx on attendance_logs(subject_id, student_id, recorded_at desc);
+-- Add and test Supabase Row Level Security policies before production deployment.
