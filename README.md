@@ -5,6 +5,7 @@
 **Author:** Ayush Kumar Gupta · [GitHub](https://github.com/Blood79) · [LinkedIn](https://linkedin.com/in/ayush-kumar-gupta-43314b238)
 
 [![CI](https://github.com/Blood79/SnapClass-AI-Attendance-System/actions/workflows/ci.yml/badge.svg)](https://github.com/Blood79/SnapClass-AI-Attendance-System/actions/workflows/ci.yml)
+[![Security](https://github.com/Blood79/SnapClass-AI-Attendance-System/actions/workflows/security.yml/badge.svg)](https://github.com/Blood79/SnapClass-AI-Attendance-System/actions/workflows/security.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B.svg)](https://streamlit.io/)
@@ -19,11 +20,11 @@ SnapClass is designed as an end-to-end engineering project rather than a single 
 |---|---|
 | Face attendance | Face detection + 128-D face descriptors through the optional `face_recognition` backend |
 | Voice attendance | Voice embeddings / feature vectors with cosine-similarity verification |
-| QR workflow | Signed enrollment payloads that can be validated without exposing secrets |
+| QR workflow | Signed, expiring enrollment payloads plus downloadable QR images |
 | Roles | Teacher and student flows with clear authentication boundaries |
 | Attendance | Explicit present/absent decisions, duplicate protection, timestamps and audit-friendly records |
 | Data layer | Local demo repository plus Supabase-ready SQL schema |
-| Engineering | Typed Python modules, unit tests, Docker, CI, security checks and docs |
+| Engineering | Typed Python modules, tests, Docker, CI, dependency auditing and security docs |
 
 ## Architecture
 
@@ -51,7 +52,7 @@ SnapClass is designed as an end-to-end engineering project rather than a single 
                  └─────────────────────────────┘
 ```
 
-The landing page is intentionally separate from the application UI so the project can be presented as a deployable product, not only as coursework.
+The landing page is intentionally separate from the application UI so the project can be presented as a deployable product, not only as coursework. The Streamlit app also includes a Biometric Lab for exercising the optional face and voice adapters.
 
 ## Project structure
 
